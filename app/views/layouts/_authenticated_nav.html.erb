@@ -1,0 +1,14 @@
+<%= content_for :left_options do %>
+  <li>
+    <%= link_to 'Available Surveys', surveys_path %>
+  </li>
+  <li>
+    <%= link_to 'My Surveys', backoffice_surveys_path %>
+  </li>
+<% end %>
+<%= content_for :right_options do %>
+  <li>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+  </li>
+<% end %>
+<%= render template: 'layouts/nav_template' %>

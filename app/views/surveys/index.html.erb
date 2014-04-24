@@ -1,0 +1,8 @@
+<h1>
+  Available Surveys
+</h1>
+<ul class="list-unstyled">
+  <% @surveys.each do |survey| %>
+  <li><%= survey.name %></li>
+  <% end %>
+</ul>
