@@ -1,0 +1,45 @@
+<%= form_for(@question, url: question_scope(@survey, @question)) do |f| %>
+  <%= f.hidden_field :survey_id %>
+  <div class="row">
+    <div class="col-lg-5">
+      <%= link_to 'Back to Survey', edit_backoffice_survey_path(@survey), class: 'pull-right' %>
+      <br>
+      <div class="form-group">
+        <%= f.label 'Question text'  %>
+        <%= f.text_field :text, class: 'form-control' %>
+      </div>
+      <div class="clearfix"></div>
+      <div class="field l-top-margin-buffer">
+        <h4>
+          Question Options
+          <span class="pull-right"><%= link_to_add_field "Add a new Option", f, :options %></span>
+        </h4>
+        <div class="col-lg-12">
+          <ul class="list-unstyled">
+            <%= f.fields_for :options do |builder| %>
+              <%= render "option_fields", :f => builder %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= f.submit class: 'btn btn-primary l-top-margin-buffer' %>
+<% end %>
+
+<script type="text/javascript">
+  // remove attachment field
+  function removeField(link) {
+    $(link).prev("input[type=hidden]").val("true");
+    tag = $(link).closest("li")
+    tag.hide("fade in").addClass("deleted");
+  }
+
+  // add attachment field
+  function addField(link, association, content) {
+    var new_id = new Date().getTime();
+    var regexp = new RegExp("new_" + association, "g");
+    var html = $(content.replace(regexp, new_id)).hide();
+    html.appendTo($(link).closest("div.field").find("ul").first()).slideDown("slow");
+  }
+</script>

@@ -5,11 +5,11 @@ module Backoffice::SurveysHelper
   end
 
   def new_survey
-    new_backoffice_survey_path
+    new_survey_path
   end
 
   def edit_survey(resource)
-    edit_backoffice_survey_path(resource)
+    edit_survey_path(resource)
   end
 
   def survey_scope(resource)
@@ -21,14 +21,14 @@ module Backoffice::SurveysHelper
   end
 
   def new_attempt
-    new_backoffice_attempt_path
+    new_attempt_path
   end
 
   def attempt_scope(resource)
     if action_name =~ /new|create/
-     backoffice_attempts_path(resource)
+     attempts_path(resource)
     elsif action_name =~ /edit|update/
-      backoffice_attempt_path(resource)
+      attempt_path(resource)
     end
   end
 
@@ -40,5 +40,9 @@ module Backoffice::SurveysHelper
     link_to_function(name, "addField(this, \"#{association}\", \"#{escape_javascript(fields)}\")",
     :id=>"add-attach",
     :class=>"btn btn-small btn-info")
+  end
+
+  def survey_status(survey)
+    survey.active ? 'active' : 'Disabled'
   end
 end

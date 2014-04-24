@@ -1,6 +1,50 @@
 @import 'bootstrap';
 
+$buffer-size: 20px;
 
 body {
   padding-top: 70px;
+}
+
+html, body {
+  height: 100%;
+}
+
+//Reset Classes
+.reset-top-margin {
+  margin-top: 0 !important;
+}
+
+.reset-bottom-margin {
+  margin-bottom: 0 !important;
+}
+
+.reset-left-margin {
+  margin-right: 0 !important;
+}
+
+.reset-right-margin {
+  margin-right: 0 !important;
+}
+
+//Helper Classes
+.top-padding-buffer {
+  padding-top: $buffer-size;
+}
+
+.bottom-padding-buffer {
+  padding-bottom: $buffer-size;
+}
+
+.left-padding-buffer {
+  padding-left: $buffer-size;
+}
+
+.right-padding-buffer {
+  padding-right: $buffer-size;
+}
+//Bootstrap Overides
+
+.form-horizontal .control-label {
+    text-align: left;
 }

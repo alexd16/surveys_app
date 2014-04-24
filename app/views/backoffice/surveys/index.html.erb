@@ -1,16 +1,31 @@
-<div class="questionnaires_<%= action_name %>">
-  <h1>
-      Surveys Index
-  </h1>
-  <hr>
-  <%= link_to "New Survey", new_survey %>
-
-  <ul>
-    <% @surveys.each do |survey| %>
-      <li>
-        <%= link_to survey.name, edit_survey(survey) %>
-      </li>
-    <% end -%>
-  </ul>
-
+<div class="container">
+  <h3>My Surveys</h3>
+  <%= link_to 'Create new Survey', new_backoffice_survey_path, class: 'btn btn-primary pull-right' %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Created at</th>
+        <th>Survey Name</th>
+        <th>Responses</th>
+        <th>Attempts Limit</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tboddy>
+      <% @surveys.each do |survey| %>
+        <tr>
+          <td><%= survey.created_at.strftime("%d/%m/%Y")  %></td>
+          <td><%= survey.name %></td>
+          <td><%= survey.attempts.size %></td>
+          <td><%= survey.attempts_number %></td>
+          <td><%= survey_status(survey) %></td>
+          <td>
+            <%= link_to 'Stats', backoffice_survey_path(survey), class: 'btn btn-primary btn-sm' %>
+            <%= link_to 'Edit', edit_backoffice_survey_path(survey), class: 'btn btn-primary btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+    </tboddy>
+  </table>
 </div>

@@ -1,13 +1,13 @@
 <%= content_for :left_options do %>
-  <li>
+  <li class="<%= 'active' if section?('surveys') %>">
     <%= link_to 'Available Surveys', surveys_path %>
   </li>
-  <li>
+  <li class="<%= 'active' if section?('backoffice') %>">
     <%= link_to 'My Surveys', backoffice_surveys_path %>
   </li>
 <% end %>
 <%= content_for :right_options do %>
-  <li>
+  <li >
     <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
   </li>
 <% end %>

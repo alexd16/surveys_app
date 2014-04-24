@@ -1,0 +1,14 @@
+<%= render partial: 'shared/survey_list', locals: {selected_survey: @survey} %>
+<div class="col-lg-8">
+  <% if @survey.nil? %>
+    <p>
+      <%= @participant.email %> there are not Active Surveys right now.
+    </p>
+    <% elsif @survey.avaliable_for_participant?(@participant) %>
+      <%= render 'form' %>
+    <% else %>
+    <p>
+      <%= @participant.email %> spent all the possible attempts to answer this Survey
+    </p>
+  <% end -%>
+</div>

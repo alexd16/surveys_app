@@ -1,4 +1,5 @@
 class Backoffice::SurveysController < ApplicationController
+  before_action :authenticate_user!
 
   before_filter :load_survey, :only => [:show, :edit, :update]
 
@@ -36,7 +37,7 @@ class Backoffice::SurveysController < ApplicationController
   private
 
   def default_redirect
-    redirect_to backoffice_surveys_path, alert: I18n.t("surveys_controller.#{action_name}")
+    redirect_to edit_backoffice_survey_path(@survey), alert: I18n.t("surveys_controller.#{action_name}")
   end
 
   def load_survey

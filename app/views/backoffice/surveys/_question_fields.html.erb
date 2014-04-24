@@ -1,15 +1,20 @@
 <li>
-  <legend>Question</legend>
-  <div class="field">
-    <%= f.label :text %> <br />
-    <%= f.text_field :text %>
-    <ul class="options">
-      <%= f.fields_for :options do |builder| %>
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="form-group">
+        <label for="">Name</label>
+        <%= f.text_field :text, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-lg-6 field">
+      <ul class="list-unstyled">
+        <%= f.fields_for :options do |builder| %>
           <%= render "option_fields", :f => builder %>
-      <% end -%>
-    </ul>
-    <%= link_to_add_field "Add a new Option", f, :options %>
-    <br/ >
-    <%= link_to_remove_field "Remove Question", f %>
+        <% end %>
+      </ul>
+      <%= link_to_add_field "Add a new Option", f, :options %>
+      <br/ >
+      <%= link_to_remove_field "Remove Question", f %>
+    </div>
   </div>
 </li>

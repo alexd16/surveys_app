@@ -1,11 +1,17 @@
 SurveysApp::Application.routes.draw do
 
   namespace :backoffice do
-    resources :surveys
+    resources :surveys, except: [:show] do 
+      resources :questions, only: [:new, :create, :edit, :update, :destroy]
+    end
     resources :attempts, :only => [:new, :create]
   end
 
-  resources :surveys, only: [:index]
+  resources :surveys, only: [:index] do 
+    resources :attempts, :only => [:new, :create] do 
+      member {get 'results'}
+    end
+  end
 
   devise_for :users
   get "home/index"
@@ -13,7 +19,7 @@ SurveysApp::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  root 'surveys#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

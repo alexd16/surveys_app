@@ -1,0 +1,13 @@
+<% question %>
+<%# question_index %>
+
+<p><%= question.text %></p>
+<%= hidden_field_tag "survey_attempt[answers_attributes][#{question_counter}][question_id]", question.id %>
+<% question.options.each do |option| %>
+  <div class="checkbox left-padding-buffer">
+    <label>
+      <%= check_box_tag "survey_attempt[answers_attributes][#{question_counter}][option_id][]", option.id %>
+      <%= option.text %>
+    </label>
+  </div>
+<% end -%>

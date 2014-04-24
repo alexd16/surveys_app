@@ -1,7 +1,6 @@
-class Backoffice::AttemptsController < ApplicationController
+class AttemptsController < ApplicationController
 
-  helper 'backoffice/surveys'
-
+  before_filter :load_surveys, only: [:new, :create]
   before_filter :load_active_survey
   before_filter :normalize_attempts_data, :only => :create
 
@@ -17,18 +16,27 @@ class Backoffice::AttemptsController < ApplicationController
   def create
     @attempt = @survey.attempts.new(attempt_params)
     @attempt.participant = current_user
-
     if @attempt.valid? && @attempt.save
-      redirect_to view_context.new_attempt, alert: I18n.t("attempts_controller.#{action_name}")
+      #redirect_to view_context.new_attempt, alert: I18n.t("attempts_controller.#{action_name}")
+      redirect_to survey_path(@survey), alert: I18n.t("attempts_controller.#{action_name}")
     else
       render :action => :new
     end
   end
 
+  def results
+    @attempt = Survey::Attempt.find(params[:id])
+    
+  end
+
   private
 
+  def load_surveys
+    @surveys = Survey::Survey.all
+  end
+
   def load_active_survey
-    @survey =  Survey::Survey.active.first
+    @survey = Survey::Survey.find params[:survey_id]
   end
 
   def normalize_attempts_data

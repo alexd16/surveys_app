@@ -1,0 +1,17 @@
+<li class="l-top-padding-buffer">
+  <div class="field form-inline">
+    <div class="form-group">
+      <%= link_to_remove_field "<span class='glyphicon glyphicon-remove'></span>".html_safe, f, class: 'btn btn-danger' %>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Option text', class: "sr-only" %> 
+      <%= f.text_field :text, class: 'form-control', placeholder: 'Option Text' %>
+    </div>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box :correct %>  
+        Correct?
+      </label>  
+    </div>
+  </div>
+</li>

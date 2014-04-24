@@ -11,9 +11,7 @@
 <header>
   <%= yield :header %>
 </header>
-<div class="container">
-  <%= content_for?(:content) ? yield(:content) : yield %>  
-</div>
+<%= content_for?(:content) ? yield(:content) : yield %>  
 <footer>
   <%= yield :footer %>
 </footer>

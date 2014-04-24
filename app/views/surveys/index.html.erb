@@ -1,8 +1,4 @@
-<h1>
-  Available Surveys
-</h1>
-<ul class="list-unstyled">
-  <% @surveys.each do |survey| %>
-  <li><%= survey.name %></li>
-  <% end %>
-</ul>
+<%= render partial: 'shared/survey_list', locals: {selected_survey: nil} %>
+<div class="col-lg-8">
+  <h2>Select a survey from the left menu</h2>
+</div>
