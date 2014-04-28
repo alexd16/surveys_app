@@ -13,6 +13,10 @@ SurveysApp::Application.routes.draw do
     end
   end
 
+  resources :attempts, only: [:index] do 
+    member { get 'results' }
+  end
+
   devise_for :users
   get "home/index"
   # The priority is based upon order of creation: first created -> highest priority.

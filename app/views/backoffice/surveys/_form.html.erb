@@ -36,7 +36,7 @@
       <h3>Questions</h3>
       <ul class="list-unstyled">
         <% @survey.questions.each do |question| %>
-          <li class="l-top-padding-buffer">
+          <li class="top-padding-buffer">
             <div class="col-lg-6">
               <%= link_to question.text, edit_backoffice_survey_question_path(@survey,question) %>
             </div>

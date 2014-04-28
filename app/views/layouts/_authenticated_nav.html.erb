@@ -2,6 +2,9 @@
   <li class="<%= 'active' if section?('surveys') %>">
     <%= link_to 'Available Surveys', surveys_path %>
   </li>
+  <li class="<%= 'active' if section?('attempts') %>">
+    <%= link_to 'My Results', attempts_path %>
+  </li>
   <li class="<%= 'active' if section?('backoffice') %>">
     <%= link_to 'My Surveys', backoffice_surveys_path %>
   </li>

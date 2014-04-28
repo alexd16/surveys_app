@@ -1,5 +1,5 @@
 <%= render partial: 'shared/survey_list', locals: {selected_survey: @survey} %>
-<div class="col-lg-8">
+<div class="col-lg-8 l-full-height bottom-padding-buffer l-overflow-y">
   <% if @survey.nil? %>
     <p>
       <%= @participant.email %> there are not Active Surveys right now.

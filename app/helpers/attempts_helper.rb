@@ -12,4 +12,11 @@ module AttemptsHelper
     end
   end
 
+  def option_correct?(option, answer)
+    answer.correct? && option == answer.option
+  end
+
+  def option_wrong?(option, answer)
+    !answer.correct? && option == answer.option
+  end
 end

@@ -1,0 +1,30 @@
+<%= render partial: 'shared/survey_list', locals: {selected_survey: @attempt.survey} %>
+<div class="col-lg-8 l-full-height bottom-padding-buffer l-overflow-y">
+  <h1>Results</h1>
+  <ul class="list-unstyled left-padding-buffer">
+    <% @attempt.answers.each_with_index do |answer, index| %>
+    <% question = answer.question %>
+    <li>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= index + 1 %>º Answer
+        </div>
+        <div class="panel-body">
+          <h3><%= question.text %></h3>
+          <fieldset disabled>
+            <% question.options.each do |option| %>
+            <div 
+              class="checkbox <%= 'has-error' if option_wrong?(option, answer) %> <%= 'has-success' if option_correct?(option, answer) %>">
+              <label class="control-label">
+                <%= check_box_tag "", option.id, option.id == answer.option_id %>
+                <%= option.text %>
+              </label>
+            </div>
+            <% end %>
+          </fieldset>
+        </div>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+</div>

@@ -1,7 +1,7 @@
 class AttemptsController < ApplicationController
 
-  before_filter :load_surveys, only: [:new, :create]
-  before_filter :load_active_survey
+  before_filter :load_surveys, only: [:new, :create, :results]
+  before_filter :load_active_survey, except: [:index, :results]
   before_filter :normalize_attempts_data, :only => :create
 
   def new
@@ -18,15 +18,14 @@ class AttemptsController < ApplicationController
     @attempt.participant = current_user
     if @attempt.valid? && @attempt.save
       #redirect_to view_context.new_attempt, alert: I18n.t("attempts_controller.#{action_name}")
-      redirect_to survey_path(@survey), alert: I18n.t("attempts_controller.#{action_name}")
+      redirect_to results_survey_attempt_path(@survey, @attempt), alert: I18n.t("attempts_controller.#{action_name}")
     else
       render :action => :new
     end
   end
 
   def results
-    @attempt = Survey::Attempt.find(params[:id])
-    
+    @attempt = Survey::Attempt.includes(:survey, answers: [question: [:options]]).find(params[:id])
   end
 
   private
