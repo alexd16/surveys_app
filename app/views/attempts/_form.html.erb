@@ -1,9 +1,9 @@
 <h3 class="bottom-padding-buffer">Survey <%= @survey.name %></h3>
 <%= form_for(@attempt, :url => attempt_scope(@survey, @attempt)) do |f| %>
   <%= f.fields_for :answers do |builder| %>
-    <ul class="list-unstyled left-padding-buffer">
+    <div class="left-padding-buffer">
       <% @survey.questions.each_with_index do |question, index| %>
-        <li>
+        <div class="col-lg-6">
           <div class="panel panel-default">
             <div class="panel-heading">
               <%= index + 1 %>º Question
@@ -21,10 +21,11 @@
               <% end -%>
             </div>
           </div>
-        </li>
+        </div>
       <% end -%>
-    </ul>
+    </div>
   <% end -%>
+  <div class="clearfix"></div>
   <div class="form-group">
     <%= f.submit "Submit", class: 'btn btn-primary' %>
   </div>

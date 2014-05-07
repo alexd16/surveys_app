@@ -1,8 +1,12 @@
 class AttemptsController < ApplicationController
 
-  before_filter :load_surveys, only: [:new, :create, :results]
+  before_filter :load_surveys
   before_filter :load_active_survey, except: [:index, :results]
   before_filter :normalize_attempts_data, :only => :create
+
+  def index
+
+  end
 
   def new
     @participant = current_user # you have to decide what to do here
@@ -35,7 +39,7 @@ class AttemptsController < ApplicationController
   end
 
   def load_active_survey
-    @survey = Survey::Survey.find params[:survey_id]
+    @survey = Survey::Survey.find params[:survey_id] if params[:survey_id]
   end
 
   def normalize_attempts_data

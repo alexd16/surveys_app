@@ -3,7 +3,7 @@
     <h3>Surveys</h3>
     <div class="list-group">
       <% @surveys.each do |survey| %>
-        <%= link_to survey.name, new_survey_attempt_path(survey), class: "list-group-item #{'active' if selected_survey && selected_survey == survey}" %>
+        <%= link_to survey.name, new_survey_attempt_path(survey), class: "list-group-item #{'active' if @survey && @survey == survey}" %>
       <% end %>
     </div>
   </div>
