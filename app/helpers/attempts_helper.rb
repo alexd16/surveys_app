@@ -19,4 +19,9 @@ module AttemptsHelper
   def option_wrong?(option, answer)
     !answer.correct? && option == answer.option
   end
+
+  def attempt_path(survey)
+    attempt = current_user.survey_tentatives.find_by(survey_id: survey.id)
+    results_attempt_path(attempt)
+  end
 end

@@ -43,6 +43,10 @@ html, body {
 .right-padding-buffer {
   padding-right: $buffer-size;
 }
+
+.top-margin-buffer {
+  margin-top: $buffer-size;
+}
 //Bootstrap Overides
 
 .form-horizontal .control-label {

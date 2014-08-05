@@ -1,7 +1,7 @@
 class AttemptsController < ApplicationController
 
   before_filter :load_surveys
-  before_filter :load_active_survey, except: [:index, :results]
+  before_filter :load_active_survey, except: [:index]
   before_filter :normalize_attempts_data, :only => :create
 
   def index

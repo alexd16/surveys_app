@@ -1,4 +1,9 @@
+
+<% if @survey %>
 <%= render partial: 'shared/survey_list', locals: {selected_survey: @attempt.survey} %>
+<% else %>
+<%= render 'surveys_list' %>
+<% end %>
 <div class="col-lg-8 l-full-height bottom-padding-buffer l-overflow-y">
   <h1>Results</h1>
   <ul class="list-unstyled left-padding-buffer">

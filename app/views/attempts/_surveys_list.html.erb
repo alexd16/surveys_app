@@ -1,0 +1,7 @@
+<%= render layout: 'layouts/sidebar' do  %>
+  <div class="list-group top-margin-buffer">
+    <% @surveys.each do |survey| %>
+      <%= link_to survey.name, attempt_path(survey), class: "list-group-item #{'active' if @survey && @survey == survey}" %>
+    <% end %>
+  </div>
+<% end %>
